@@ -23,3 +23,52 @@
         )
         %>
     </div>
+
+    <br>
+    <div class=" rounded">
+       <%= form_with(model: [@idea, @review], local: true) do |f| %>
+            <% if @review.errors.full_messages.each do |msg| %>
+                <ul>
+                <li class="text-danger"><%= msg %></li>
+                </ul>
+            <% end %>
+            <% end %>
+  <div class="form-group">
+    <%= f.text_area(
+      :body,
+      cols: 50,
+      rows: 5,
+      placeholder: "What are you thoughts?",
+      class: "form-control"
+    ) %>
+  </div>
+  <%= f.submit "Reviews", class: "btn-primary" %>
+<% end %>
+    </div>
+<br>
+
+        <% @reviews.each do |review| %>
+            <div >
+               <div class="font-weight-bold"><%=review.user.first_name%> </div>
+             <%= review.body %> <br>
+                <div class=" d-flex  align-items-center w-100">
+                    <small >
+                    reviewed <%= time_ago_in_words(review.created_at) %> ago •
+                    </small>
+                    <small >
+                    <%= link_to(
+                        "Delete",
+                        idea_review_path(@idea, review),
+                        method: :delete, 
+                        data: {
+                        confirm: "Are you sure?"
+                        },
+                        class: 'btn btn-link text-primary ',
+                    ) %>
+                    </small> 
+                    
+                </div>
+                <br>
+            </div>    
+        <% end %>
+    </ul>
