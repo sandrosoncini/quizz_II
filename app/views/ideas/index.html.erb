@@ -1,0 +1,18 @@
+
+
+<div class="row" >
+        <% @ideas.each do |idea| %>
+            <div class=" col-sm-4">
+                <div class="card-deck mb-3 ">        
+                <div class="card w-100">
+                    <div class="card-body">
+                        <a href="/ideas/<%=idea.id%>">
+                        <h5 class="card-title text-nowrap text-truncate"><%= idea.id%> <%=idea.title%></h5>
+                        </a>
+                        <p class="card-text text-nowrap text-truncate"><%=idea.description%></p>
+                    </div>
+                </div>
+                </div>       
+            </div>
+        <% end %>
+</div>
