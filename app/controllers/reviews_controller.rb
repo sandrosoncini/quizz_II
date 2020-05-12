@@ -5,8 +5,11 @@ class ReviewsController < ApplicationController
         @review = Review.new review_params
         @review.idea = @idea
         @review.user = current_user
-        @review.save
-        redirect_to idea_path(@idea)
+        if @review.save
+            redirect_to idea_path(@idea)
+        else
+            redirect_to root_path, alert: 'Not Authorized'
+        end
       
     end
 

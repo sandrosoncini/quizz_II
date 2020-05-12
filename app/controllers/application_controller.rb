@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     def authenticate_user!
         unless user_signed_in?
           flash[:danger] = "You need to be signed in first!"
-          redirect_to root_path
+          redirect_to new_session_path
         end
     end
 end

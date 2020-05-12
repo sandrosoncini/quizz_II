@@ -1,10 +1,10 @@
-<h1>Show Page</h1>
+
 <br>
 <div class="container-float">
     <h1 class="font-weight-bold"><%= @idea.title %></h1>
     <p class="text-justify"><%= @idea.description%></p>
     <div>
-        <small>idea <%= time_ago_in_words(@idea.created_at)%> ago.</small> 
+        <small>Idea created <%= time_ago_in_words(@idea.created_at)%> ago.</small> 
     </div>
 <br>
     <div> 
