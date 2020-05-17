@@ -1,0 +1,39 @@
+
+
+
+        <% @ideas.each do |idea| %>
+            <div class=" ">
+                <div class="card-deck mb-3 ">        
+                <div class="card w-75">
+                    <div class="card-body">
+                        <a href="/ideas/<%=idea.id%>">
+                        <h5 class="card-title text-nowrap text-truncate"><%= idea.id%> <%=idea.title%></h5>
+                        </a>
+                        <p class="card-text text-nowrap text-truncate"><%=idea.description%></p>
+                            <small class="card-text">
+                                <% if user_signed_in? && can?(:like, idea) %>
+                                    <% like = current_user.likes.find_by_idea_id(idea) %>
+                                
+                                    <% if like %>
+                                
+                                        <%= link_to 'Unlike', idea_like_path(idea, like), method: :delete %>
+                                    <% else %>
+                            
+                                        <%= link_to 'Like', idea_likes_path(idea), method: :post %>
+                                    
+                                    <% end %>
+                                <% end %>
+                                    <%= pluralize idea.likes.count, 'like' %>
+                            </small>
+                            <div>
+                            <%= idea.user.first_name%> <%= idea.user.last_name%> 
+                            </div>
+                    </>
+                     
+                </div>
+             
+                </div>  
+                       
+            </div>
+      
+        <% end %> 

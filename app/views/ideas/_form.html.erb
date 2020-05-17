@@ -1,0 +1,24 @@
+<div class="container-float">
+    <% if @idea.errors.present? %>
+    <p class="text-danger">
+        <%= @idea.errors.full_messages.join(', ')%>
+    </p>
+    <% end %>
+    <%= form_with(model: @idea, local: true) do |form| %>
+    <div>
+        <div class="form-group " >
+            <%= form.label :title %> <br>
+            <%= form.text_field(:title, class: "form-control" ) %>
+        </div>
+        <div class="form-group" >
+            <%= form.label :description %> <br>
+            <%= form.text_area :description, cols: 50, rows: 5, class: "form-control"  %>
+        </div>
+          <% if @idea.new_record? %>
+                <%= form.submit("Create", class: 'btn btn-primary') %>
+            <% else %>
+                <%= form.submit("Update", class: 'btn btn-primary') %>
+            <% end %>
+    </div>
+    <% end %>
+</div>

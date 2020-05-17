@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand navbar-dark bg-light">
+  <h4 class="navbar-brand text-primary" >Idea Factory</h4>
+  <div class="collapse navbar-collapse" id="navbarsExample02">
+    <ul class="navbar-nav mr-auto"></ul>
+    <div class="my-2 my-md-0">
+      <a class="p-2 text-primary" href="/">Home</a>
+      <a class="p-2 text-primary" href="/ideas/new">New Idea</a>
+      <% if user_signed_in? %>
+            <%= link_to "Logout", session_path, method: :delete, class:'btn btn-danger btn-sm' %>
+             <%= current_user.first_name%> <%= current_user.last_name%>
+          <% else  %>
+            <%= link_to "Log In", new_session_path, class: 'btn btn-outline-primary '%>
+            <a class="p-2 btn btn-primary" href="/users/new">Sign Up</a>
+        <% end %>
+    </div>
+  </div>
+</nav>
+<br>
